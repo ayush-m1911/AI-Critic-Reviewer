@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AI Critic — an intelligent chat interface powered by a LangGraph backend" />
+  <title>AI Critic — Smart Conversations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="app-container">
+
+    <!-- ── Sidebar ── -->
+    <aside class="sidebar" id="sidebar">
+
+      <div class="sidebar-header">
+        <div class="brand">
+          <span class="brand-icon">✦</span>
+          <span class="brand-name">AI Critic</span>
+        </div>
+      </div>
+
+      <button class="new-chat-btn" id="newChatBtn" onclick="createConversation()">
+        <span class="btn-icon">＋</span>
+        <span>New Chat</span>
+      </button>
+
+      <div class="conversations-label">Recent Conversations</div>
+
+      <div class="conversation-list" id="conversationList">
+        <div class="empty-state-sidebar">No conversations yet.<br>Start a new chat!</div>
+      </div>
+
+    </aside>
+
+    <!-- ── Main Chat Area ── -->
+    <main class="chat-area">
+
+      <!-- Top bar -->
+      <header class="chat-header" id="chatHeader">
+        <div class="chat-header-info">
+          <div class="header-avatar">✦</div>
+          <div class="header-text">
+            <span class="header-title" id="headerTitle">AI Critic</span>
+            <span class="header-subtitle" id="headerSubtitle">Select or create a conversation to begin</span>
+          </div>
+        </div>
+        <div class="header-status" id="headerStatus">
+          <span class="status-dot" id="statusDot"></span>
+          <span id="statusText">Idle</span>
+        </div>
+      </header>
+
+      <!-- Messages -->
+      <div class="messages-container" id="messagesContainer">
+
+        <!-- Welcome screen shown when no conversation selected -->
+        <div class="welcome-screen" id="welcomeScreen">
+          <div class="welcome-icon">✦</div>
+          <h1 class="welcome-title">Welcome to AI Critic</h1>
+          <p class="welcome-subtitle">An intelligent assistant that analyzes and responds to your text.<br>Start by creating a new conversation.</p>
+          <button class="welcome-cta" onclick="createConversation()" id="welcomeNewChatBtn">
+            ＋ New Conversation
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Input Area -->
+      <div class="input-area" id="inputArea">
+        <div class="input-wrapper">
+          <textarea
+            id="messageInput"
+            class="message-input"
+            placeholder="Select or create a conversation to start chatting…"
+            disabled
+            rows="1"
+          ></textarea>
+          <button
+            id="sendBtn"
+            class="send-btn"
+            onclick="sendMessage()"
+            disabled
+            title="Send message"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="input-hint" id="inputHint">Create or select a conversation to begin</div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
