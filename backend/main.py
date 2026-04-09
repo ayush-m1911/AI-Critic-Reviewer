@@ -45,7 +45,7 @@ def analyze(req: AnalyzeRequest):
     save_message(req.conversation_id, "user", req.text)
 
     # OPTIONAL: get context (last few messages)
-    history = get_messages(req.conversation_id)[-5:]
+    history = get_messages(req.conversation_id)[-3:]
 
     formatted_context = ""
     for role, content in history:
@@ -55,8 +55,11 @@ def analyze(req: AnalyzeRequest):
             formatted_context += f"\nAI: {content}"
 
     # Run graph
+    MAX_LENGTH = 4000  # characters
+
+    input_text = req.text[:MAX_LENGTH]
     result = graph.invoke({
-    "input_text": req.text,
+    "input_text": input_text,
     "context": formatted_context
 })
 

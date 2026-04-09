@@ -23,6 +23,8 @@ Output ONLY JSON:
   "intent": "...",
   "type": "..."
 }
+If input is long text:
+assume it is a blog unless clear code is present
 """
 
 STRUCTURE_PROMPT = """
@@ -41,6 +43,11 @@ Output format:
 ⚠️ Weak Points:
 📉 Missing:
 💡 Improvements:
+
+If input is long:
+- Focus only on most critical issues
+- Do NOT analyze every sentence
+- Prioritize major flaws
 """
 
 LOGIC_PROMPT = """
@@ -58,6 +65,10 @@ Output format:
 ⚠️ Weak Points:
 📉 Missing:
 💡 Improvements:
+If input is long:
+- Focus only on most critical issues
+- Do NOT analyze every sentence
+- Prioritize major flaws
 """
 
 DEPTH_PROMPT = """
@@ -75,6 +86,10 @@ Output format:
 ⚠️ Weak Points:
 📉 Missing:
 💡 Improvements:
+If input is long:
+- Focus only on most critical issues
+- Do NOT analyze every sentence
+- Prioritize major flaws
 """
 META_CRITIC_PROMPT = """
 You are a senior expert reviewer.
@@ -98,4 +113,8 @@ Output format:
 ⚠️ Weak Points:
 📉 Missing:
 💡 Improvements:
+If input is long:
+- Focus only on most critical issues
+- Do NOT analyze every sentence
+- Prioritize major flaws
 """

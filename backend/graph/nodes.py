@@ -1,4 +1,4 @@
-from langchain_groq import ChatGroq
+from langchain_anthropic import ChatAnthropic
 import os 
 from dotenv import load_dotenv
 load_dotenv()
@@ -8,9 +8,12 @@ from .prompts import ROUTER_PROMPT
 from .prompts import STRUCTURE_PROMPT, LOGIC_PROMPT, DEPTH_PROMPT, META_CRITIC_PROMPT
 
 
-llm = ChatGroq(
-    model="llama-3.1-8b-instant",
-    groq_api_key=os.getenv("GROQ_API_KEY")
+llm = ChatAnthropic(
+    model="claude-3-haiku-20240307",
+    anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"),
+    temperature=0,
+    max_tokens=1000,
+
 )
 
 
